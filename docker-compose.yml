@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: zynthra-ai-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - zynthra-ai
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: zynthra-ai-ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - zynthra-ai
+    # Uncomment for NVIDIA GPU acceleration:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+  backend:
+    build: ./backend
+    container_name: zynthra-ai-backend
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017
+      - DB_NAME=zynthra_ai
+      - OLLAMA_HOST=http://ollama:11434
+      - DEFAULT_LLM_MODEL=llama3.2:1b
+      - DEFAULT_EMBEDDING_MODEL=nomic-embed-text
+      - CORS_ORIGINS=http://localhost:3000,http://localhost
+    depends_on:
+      - mongodb
+      - ollama
+    volumes:
+      - backend_documents:/app/documents
+      - backend_index:/app/index
+    networks:
+      - zynthra-ai
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        REACT_APP_BACKEND_URL: http://localhost:8001
+    container_name: zynthra-ai-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - zynthra-ai
+
+volumes:
+  mongo_data:
+  ollama_data:
+  backend_documents:
+  backend_index:
+
+networks:
+  zynthra-ai:
+    driver: bridge

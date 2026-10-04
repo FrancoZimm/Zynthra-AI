@@ -1,0 +1,360 @@
+/* ========================================================
+   Tutor IA Verificable - RENATAPATA NATURAL THEME
+   Light + Olive Green + Friendly Monospace accents
+   ======================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* === Backgrounds (light paper tones) === */
+  --bg-primary: #FAF8F1;          /* warm paper */
+  --bg-secondary: #F3EFE3;         /* panel bg */
+  --bg-tertiary: #E8E2D0;          /* elevated */
+  --bg-panel: #FFFFFF;             /* pure white cards */
+  --bg-hover: #EEEAD8;
+
+  /* === Text (deep charcoal with green tint) === */
+  --text-primary: #1F2A1A;         /* main text */
+  --text-secondary: #4A5A42;       /* secondary */
+  --text-muted: #8A9680;
+  --text-inverse: #FAF8F1;
+
+  /* === Olive Green palette === */
+  --olive-darkest: #2D3F1F;
+  --olive-dark: #4A6B2F;           /* deep olive */
+  --olive-medium: #6B8E3D;         /* olive vivo */
+  --olive-bright: #8BAE4D;         /* olive claro */
+  --olive-leaf: #A8C978;           /* hoja */
+  --olive-soft: #D6E2B8;           /* fondo suave */
+  --olive-whisper: #EEF3DE;        /* ultra suave */
+
+  /* === Functional colors (warm natural) === */
+  --accent-primary: #4A6B2F;       /* olive dark - main */
+  --accent-secondary: #6B8E3D;     /* olive medium */
+  --accent-bright: #8BAE4D;        /* highlights */
+  --accent-danger: #B85C3C;        /* terracotta */
+  --accent-warning: #C48A3C;       /* mustard */
+  --accent-success: #6B9E5C;       /* moss */
+  --accent-info: #5C7A8E;          /* dusty blue */
+
+  /* === Borders === */
+  --border-default: #D8D0B8;
+  --border-subtle: #E8E2D0;
+  --border-focus: #6B8E3D;
+  --border-strong: #4A6B2F;
+
+  /* === Typography === */
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+  --font-heading: 'DM Sans', system-ui, sans-serif;
+
+  /* === Spacing === */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* === Shadows (soft, natural) === */
+  --shadow-sm: 0 1px 2px rgba(47, 60, 38, 0.04);
+  --shadow-md: 0 2px 8px rgba(47, 60, 38, 0.06);
+  --shadow-lg: 0 8px 24px rgba(47, 60, 38, 0.08);
+  --shadow-glow: 0 0 0 3px rgba(107, 142, 61, 0.15);
+}
+
+/* === Base === */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(107, 142, 61, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--accent-secondary);
+}
+
+/* === Buttons === */
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-glow);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* === Inputs === */
+input, textarea, select {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-primary);
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent-secondary);
+  box-shadow: var(--shadow-glow);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* === Scrollbar === */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--olive-medium);
+}
+
+/* === Selection === */
+::selection {
+  background-color: var(--olive-leaf);
+  color: var(--olive-darkest);
+}
+
+/* === Utility === */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* === Range Slider === */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-radius: 999px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--accent-primary);
+  border: 3px solid var(--bg-panel);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-md);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--accent-secondary);
+  transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: var(--accent-primary);
+  border: 3px solid var(--bg-panel);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(107, 142, 61, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(107, 142, 61, 0); }
+}
+
+@keyframes pop {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-fadeIn { animation: fadeIn 0.3s ease-out; }
+.animate-pop { animation: pop 0.2s ease-out; }
+.pulse-indicator { animation: pulse-soft 2s infinite; }
+
+/* === Markdown content === */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3 {
+  color: var(--olive-darkest);
+  font-weight: 700;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+.markdown-body strong {
+  color: var(--olive-dark);
+  font-weight: 600;
+}
+
+.markdown-body em {
+  color: var(--text-secondary);
+}
+
+.markdown-body code {
+  background-color: var(--olive-whisper);
+  color: var(--olive-darkest);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9em;
+  border: 1px solid var(--olive-soft);
+}
+
+.markdown-body pre {
+  background-color: #2D3F1F;
+  color: var(--olive-leaf);
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin: 12px 0;
+  box-shadow: var(--shadow-md);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--olive-leaf);
+}
+
+.markdown-body ul, .markdown-body ol {
+  padding-left: 1.5em;
+  margin: 0.5em 0;
+}
+
+.markdown-body li {
+  margin-bottom: 0.25em;
+  color: var(--text-primary);
+}
+
+.markdown-body li::marker {
+  color: var(--accent-primary);
+  font-weight: bold;
+}
+
+.markdown-body blockquote {
+  border-left: 4px solid var(--olive-medium);
+  background-color: var(--olive-whisper);
+  padding: 8px 14px;
+  color: var(--text-secondary);
+  margin: 0.5em 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* === Specific components === */
+.natural-card {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.natural-card:hover {
+  border-color: var(--olive-medium);
+  box-shadow: var(--shadow-md);
+}
+
+.soft-shadow {
+  box-shadow: var(--shadow-md);
+}
+
+/* Status dot */
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.status-dot.active {
+  background-color: var(--accent-success);
+}
+
+.status-dot.inactive {
+  background-color: var(--accent-warning);
+}
+
+.status-dot.error {
+  background-color: var(--accent-danger);
+}
+
+/* App container */
+.App {
+  min-height: 100vh;
+}
